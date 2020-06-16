@@ -18,6 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* HnMAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HnMAppTests.m */; };
 		34C0591112ABE54475873EF8 /* libPods-HnMApp-HnMAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7321AACF49F412FFAEF1D /* libPods-HnMApp-HnMAppTests.a */; };
 		984D1F3FC5771C18006CCD99 /* libPods-HnMApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1738F1B894C0A6090C56BB61 /* libPods-HnMApp-tvOSTests.a */; };
+		D59A293F2498C89900B13C68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D59A293E2498C89900B13C68 /* GoogleService-Info.plist */; };
 		E3E424A6795007EF4860FAE3 /* libPods-HnMApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C756329697864A5A96D75A2 /* libPods-HnMApp-tvOS.a */; };
 		E63F113036F52EDECB606A46 /* libPods-HnMApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A4B207F5AC1D1B159AF21A /* libPods-HnMApp.a */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		7F88B0B1579BFED014E8D6BA /* Pods-HnMApp-HnMAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HnMApp-HnMAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HnMApp-HnMAppTests/Pods-HnMApp-HnMAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1E7321AACF49F412FFAEF1D /* libPods-HnMApp-HnMAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HnMApp-HnMAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BD0671AFDEDA87DD4F6DF7 /* Pods-HnMApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HnMApp.debug.xcconfig"; path = "Target Support Files/Pods-HnMApp/Pods-HnMApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D59A293E2498C89900B13C68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "HnMApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7A4F2CA6280076A6B5CFB92 /* Pods-HnMApp-HnMAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HnMApp-HnMAppTests.release.xcconfig"; path = "Target Support Files/Pods-HnMApp-HnMAppTests/Pods-HnMApp-HnMAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -130,6 +132,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				D59A293E2498C89900B13C68 /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -161,7 +164,6 @@
 				4A799C74F1C75D76D1804E6B /* Pods-HnMApp-tvOSTests.debug.xcconfig */,
 				41D4F66ED3564E97BC37AFE6 /* Pods-HnMApp-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -342,6 +344,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				D59A293F2498C89900B13C68 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +483,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -499,6 +503,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Cpp.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -550,6 +555,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -569,6 +575,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Cpp.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

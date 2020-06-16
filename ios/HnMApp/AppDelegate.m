@@ -23,10 +23,14 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
+@import Firebase;
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FIRApp configure];
+  FIRFirestore *defaultFirestore = [FIRFirestore firestore];
 #if DEBUG
   InitializeFlipper(application);
 #endif
