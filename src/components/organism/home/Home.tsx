@@ -1,43 +1,82 @@
-import React, {useEffect, useCallback, useState} from 'react';
-import {Text, SafeAreaView, StatusBar} from 'react-native';
-import {getProducts} from '../../../../api/products/getProducts';
 import {
-  GenresTab,
-  HomeContainer,
-  TabTetx,
-  TabTextContainer,
-  ListTitle,
-} from './styles';
+  GenreScreenNavigationProp,
+  HomeScreenNavigationProp,
+} from '../../../../types/navigatorTypes';
+import {HomeContainer, Logo, LogoContainer} from './homeStyles';
+import React, {useCallback, useEffect, useState} from 'react';
+import {TabText, TabTextContainer} from './homeStyles';
+
+import {Product} from '../../../../types/responsesTypes';
 import ProductsList from '../../molecoles/list/ProductsList';
-import {Product} from '../../../../types';
+import ScreenHeader from '../../atoms/screenHeader/ScreenHeader';
+import Spinner from '../../atoms/spinner/Spinner';
+import {getProducts} from '../../../../api/products/getProducts';
+import logo from '../../../../assets/logo.png';
+import {useNavigation} from '@react-navigation/native';
 
 const Home: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const navigation:
+    | HomeScreenNavigationProp
+    | GenreScreenNavigationProp = useNavigation();
 
-  const getAllProducts = useCallback(async () => {
-    const allProducts = await getProducts('men_newarrivals');
-    setProducts(allProducts);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+  const [evidenceProducts, setEvidenceProducts] = useState<Product[]>([]);
+
+  const getNewProducts = useCallback(async () => {
+    const newMenProducts = await getProducts('men_newarrivals');
+    const newWomenProducts = await getProducts('ladies_newarrivals');
+
+    const newArrivals = newMenProducts.concat(newWomenProducts);
+
+    setNewProducts(newArrivals);
   }, []);
+
+  const getInEvidenceProducts = useCallback(async () => {
+    const menInEvidenceProducts = await getProducts('men_premiumquality');
+    const womenInEvidenceProducts = await getProducts(
+      'ladies_divided_trending_now',
+    );
+
+    const inEvidence = menInEvidenceProducts.concat(womenInEvidenceProducts);
+
+    setEvidenceProducts(inEvidence);
+  }, []);
+
   useEffect(() => {
-    getAllProducts();
-  }, [getAllProducts]);
+    getNewProducts();
+    getInEvidenceProducts();
+  }, [getNewProducts, getInEvidenceProducts]);
+
+  const Lists = () => (
+    <>
+      {newProducts.length !== 0 && evidenceProducts.length !== 0 ? (
+        <>
+          <ProductsList products={newProducts} listTitle="NEW ARRIVAL" />
+          <ProductsList products={evidenceProducts} listTitle="IN EVIDENCE" />
+        </>
+      ) : (
+        <Spinner />
+      )}
+    </>
+  );
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#000000'}}>
-      <StatusBar barStyle="light-content" />
-      <HomeContainer>
-        <GenresTab>
-          <TabTextContainer>
-            <TabTetx>WOMAN</TabTetx>
-          </TabTextContainer>
-          <TabTetx>|</TabTetx>
-          <TabTextContainer>
-            <TabTetx>MAN</TabTetx>
-          </TabTextContainer>
-        </GenresTab>
-        <ProductsList products={products} />
-      </HomeContainer>
-    </SafeAreaView>
+    <HomeContainer>
+      <ScreenHeader>
+        <TabTextContainer
+          onPress={() => navigation.navigate('Genres', {title: 'Woman'})}>
+          <TabText>WOMAN</TabText>
+        </TabTextContainer>
+        <LogoContainer>
+          <Logo source={logo} resizeMode="contain" />
+        </LogoContainer>
+        <TabTextContainer
+          onPress={() => navigation.navigate('Genres', {title: 'Man'})}>
+          <TabText>MAN</TabText>
+        </TabTextContainer>
+      </ScreenHeader>
+      <Lists />
+    </HomeContainer>
   );
 };
 

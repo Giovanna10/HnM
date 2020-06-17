@@ -1,5 +1,5 @@
+import {Product} from '../../types/responsesTypes';
 import hnm from '../apiInterceptor';
-import {Product} from '../../types';
 
 export const getProducts = async (categories: string) => {
   const params = {

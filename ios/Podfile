@@ -20,7 +20,9 @@ def add_flipper_pods!(versions = {})
 	# add pods for any other desired Firebase products
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-
+  
+  #pods for Facebook
+  
   # List all transitive dependencies for FlipperKit pods
   # to avoid them being linked in Release builds
   pod 'Flipper', versions['Flipper'], :configuration => 'Debug'
